@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i.ibb.co/6WfZyvf/favicon.png">
+    <link rel="shortcut icon" href="https://i.ibb.co/6WfZyvf/favicon.png">
+    <title>POSTY</title>
+    <style>
+    @font-face {
+      font-family: 'SUIT-Regular';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      font-family: 'SUIT-Regular';
+    }
+    
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px; /* 로고 위 여백 */
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 1215px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .banner {
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 10px; /* 배너 위 여백 */
+        }
+
+        .banner .title {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .description {
+            text-align: center;
+            margin: 20px;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 50px;
+        }
+
+        .image-grid-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 반응형 처리 */
+        @media (max-width: 1200px) {
+            .image-grid {
+                grid-template-columns: repeat(3, 1fr); /* 화면이 좁아지면 3열로 */
+            }
+        }
+
+        @media (max-width: 900px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr); /* 더 좁아지면 2열로 */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .image-grid {
+                grid-template-columns: 1fr; /* 모바일에서는 1열로 */
+            }
+
+            .banner .title {
+                font-size: 20px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://i.ibb.co/Nxdmbm4/Logo.png" alt="logo" onclick="navigateTo('index.html')">
+    </div>
+
+    <div class="banner">
+        <div class="title">
+            sample cards
+        </div>
+    </div>
+    
+    <div class="description">
+        posty로 제작된 다양한 엽서를 구경해보세요!
+    </div>
+    
+    <div class="image-grid-container">
+        <div class="image-grid">
+            <img src="https://i.ibb.co/Wp8c7cC/posty-card-4.png" alt="이미지 1">
+            <img src="https://i.ibb.co/FK2GN50/Posty-card2.png" alt="이미지 2">
+            <img src="https://i.ibb.co/9rFdmDK/Posty-card3.png" alt="이미지 3">
+            <img src="https://i.ibb.co/BBpyx7P/Posty-card4.png" alt="이미지 4">
+            <img src="https://i.ibb.co/HgCcM9P/sticker-decoration.png" alt="이미지 5">
+            <img src="https://i.ibb.co/7kPfK2x/Posty-card6.png" alt="이미지 6">
+            <img src="https://i.ibb.co/HCD13Jv/Posty-card7.png" alt="이미지 7">
+            <img src="https://i.ibb.co/VxG9dSt/Posty-card5.png" alt="이미지 8">
+            <img src="https://i.ibb.co/0XVLJXj/Posty-card9.png" alt="이미지 9">
+            <img src="https://i.ibb.co/LxL2zpx/posty-card-11.png" alt="이미지 10">
+            <img src="https://i.ibb.co/tqQdhpW/Posty-card10.png" alt="이미지 11">
+            <img src="https://i.ibb.co/7Xf1Gpq/Posty-card12.png" alt="이미지 12">
+        </div>
+    </div>
+    <script>
+        function navigateTo(url) {
+        window.location.href = url;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://i.ibb.co/6WfZyvf/favicon.png">
+  <link rel="shortcut icon" href="https://i.ibb.co/6WfZyvf/favicon.png">
+  <title>POSTY</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    @font-face {
+      font-family: 'SUIT-Regular';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --primary-bg: #FFE7DB;
+      --secondary-bg: #FEF5E2;
+      --white: #FFFFFF;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --delete-btn-color: #FD824B;
+      --save-btn-color: #FDA24B;
+      --scrollbar-bg: #E0C5B8;
+      --scrollbar-hover: #D0B5A8;
+      --border-radius-large: 25px;
+      --border-radius-medium: 10px;
+      --border-radius-small: 6px;
+    }
+
+    * {
+      font-family: 'SUIT-Regular';
+    }
+
+    .bg-sticker-1 {
+      top: 5px;
+      left: -75px;
+      z-index: -1;
+      background: url("./image/image1.png") no-repeat center center;
+    }
+
+    .bg-sticker-2 {
+      bottom: -105px;
+      left: calc(50% - 150px);
+      z-index: -1;
+      background: url("./image/image2.png") no-repeat center center;
+    }
+
+    .bg-sticker-3 {
+      top: calc(50% - 100px);
+      right: -105px;
+      rotate: 5deg;
+      z-index: -1;
+      background: url("./image/image3.png") no-repeat center center;
+    }
+
+
+
+    .bg-sticker-1,
+    .bg-sticker-2,
+    .bg-sticker-3 {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      background-size: cover;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: var(--primary-bg);
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 5px;
+      width: 100%;
+    }
+
+    .btn {
+      height: 60px;
+      margin: 10px;
+      border: none;
+      border-radius: 50px;
+      color: var(--white);
+      cursor: pointer;
+      box-shadow: 4px 4px 9px 0 var(--shadow-color);
+    }
+
+    .btn-reset {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      background: var(--white);
+      border-radius: 50%;
+    }
+
+    .btn-reset img {
+      width: 50%;
+      height: 50%;
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+
+    .btn-reset img:hover {
+      opacity: 1;
+    }
+
+    .btn-action {
+      width: 175px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .btn-delete {
+      background: var(--delete-btn-color);
+    }
+
+    .btn-save {
+      background: var(--save-btn-color);
+    }
+
+    .app-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .app-body {
+      display: flex;
+      gap: 30px;
+      width: 1100px;
+      padding: 20px;
+      background: var(--secondary-bg);
+      border-radius: var(--border-radius-large);
+      box-shadow: 10px 10px 35px 0 var(--shadow-color);
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 480px;
+      height: 550px;
+      padding: 25px 0;
+      background: var(--white);
+      border-radius: var(--border-radius-large);
+      overflow: hidden;
+    }
+
+    .sticker-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      height: 100%;
+      padding: 0px 10px;
+      background-color: var(--white);
+      border-radius: var(--border-radius-large);
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .sticker {
+      width: 80px;
+      height: 80px;
+      margin: 10px;
+      padding: 4px;
+      border-radius: var(--border-radius-medium);
+      cursor: pointer;
+    }
+
+    .canvas-container {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--white);
+      overflow: hidden;
+    }
+
+    .color-palette {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .palette-label {
+      font-size: 21px;
+      font-weight: 600;
+      text-align: center;
+      color: #696969;
+    }
+
+    .color-circle {
+      width: 40px;
+      height: 40px;
+      border: 5px solid var(--white);
+      border-radius: 50%;
+      box-shadow: 4px 5px 7px -2px var(--shadow-color);
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+
+    .color-circle:hover {
+      border-color: #ddd;
+    }
+
+    .color-black {
+      background-color: black;
+    }
+
+    .color-white {
+      background-color: white;
+    }
+
+    .color-pink {
+      background-color: #FFA8D8;
+    }
+
+    .color-yellow {
+      background-color: #FFE730;
+    }
+
+    .color-gray {
+      background-color: #E2E2E2;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: var(--border-radius-small);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-bg);
+      border-radius: var(--border-radius-small);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--scrollbar-hover);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-container">
+    <div class="bg-sticker-1"></div>
+    <div class="bg-sticker-2"></div>
+    <div class="bg-sticker-3"></div>
+    <div class="toolbar">
+      <button class="btn btn-action btn-delete" style="display:none;">Delete</button>
+      <button class="btn btn-action btn-save">Save</button><button class="btn btn-reset">
+        <img src="https://www.svgrepo.com/show/18461/refresh.svg" alt="Reset">
+      </button>
+    </div>
+    <div class="app-body">
+      <div class="sidebar">
+        <div class="sticker-list"></div>
+        <div class="color-palette">
+          <div class="palette-label">
+            <div>card</div>
+            <div>color</div>
+          </div>
+          <div class="color-circle color-white" data-color="white"></div>
+          <div class="color-circle color-gray" data-color="#D9D9D9"></div>
+          <div class="color-circle color-black" data-color="black"></div>
+          <div class="color-circle color-yellow" data-color="#FFE730"></div>
+          <div class="color-circle color-pink" data-color="#FFA8D8"></div>
+        </div>
+      </div>
+      <div class="canvas-container">
+        <div>
+          <canvas id="main-canvas" width="500" height="500"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      const stickerItems = [
+        "https://i.ibb.co/WGbjRZP/O1.png", "https://i.ibb.co/MgyF0M9/O2.png",
+        "https://i.ibb.co/H71NbPD/O3.png", "https://i.ibb.co/yRxRH3Q/O4.png",
+        "https://i.ibb.co/4RN2BZ3/O5.png", "https://i.ibb.co/kSnfRyg/O6.png",
+        "https://i.ibb.co/0B3rmdC/O7.png", "https://i.ibb.co/6YCT05w/O8.png",
+        "https://i.ibb.co/Yc2NN7W/O9.png", "https://i.ibb.co/tPFRNPf/O10.png",
+        "https://i.ibb.co/VLnXj7B/O11.png", "https://i.ibb.co/DwsS7Q0/O12.png",
+        "https://i.ibb.co/TbWjR7k/O13.png", "https://i.ibb.co/1qyGwHD/O14.png",
+        "https://i.ibb.co/XW4vKWq/O15.png", "https://i.ibb.co/6J7Crrk/O16.png",
+        "https://i.ibb.co/100Zdpp/O17.png", "https://i.ibb.co/PT1Pnyy/O18.png",
+        "https://i.ibb.co/6DLYxVV/O19.png", "https://i.ibb.co/mqmG496/O20.png",
+      ];
+
+      const canvas = new fabric.Canvas("main-canvas", {
+        backgroundColor: "white",
+      });
+
+      stickerItems.forEach((src) => {
+        $("<img>", { class: "sticker", src: src, "data-src": src }).appendTo($(".sticker-list"));
+      });
+
+      $(".sticker-list").on("click", ".sticker", function() {
+        const src = $(this).data("src");
+        fabric.Image.fromURL(src, function(img) {
+          img.scale(0.5).set({
+            left: 100,
+            top: 100,
+            cornerSize: 10,
+            cornerColor: "blue",
+            cornerStrokeColor: "blue",
+            cornerStyle: "circle",
+            transparentCorners: false,
+          });
+          canvas.add(img);
+          canvas.setActiveObject(img);
+          canvas.renderAll();
+        }, { crossOrigin: "anonymous" });
+      });
+
+      $(".btn-delete").on("click", function() {
+        const activeObject = canvas.getActiveObject();
+        if (activeObject) {
+          canvas.remove(activeObject);
+          canvas.renderAll();
+        }
+      });
+
+      $(".btn-save").on("click", function() {
+        try {
+          const dataURL = canvas.toDataURL({
+            format: "png",
+            quality: 1,
+          });
+
+          const link = document.createElement("a");
+          link.href = dataURL;
+          link.download = "posty_card.png";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } catch (error) {
+          console.error("다운로드 중 오류 발생:", error);
+          alert("이미지 다운로드에 실패했습니다. 모든 이미지가 안전하게 로드되었는지 확인해주세요.");
+        }
+      });
+
+      canvas.on("selection:created", function() {
+        $(".btn-delete").show();
+      });
+
+      canvas.on("selection:cleared", function() {
+        $(".btn-delete").hide();
+      });
+
+      $(".color-circle").on("click", function() {
+        const color = $(this).data("color");
+        canvas.setBackgroundColor(color, canvas.renderAll.bind(canvas));
+      });
+
+      $(".btn-reset").on("click", function() {
+        canvas.clear();
+        canvas.setBackgroundColor("white", canvas.renderAll.bind(canvas));
+      });
+    });
+  </script>
+</body>
+
+</html>

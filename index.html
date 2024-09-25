@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=980, user-scalable=no">
+    <meta name="naver-site-verification" content="86f59b5fca087a44dfcdda58fab02e8dfa768aee" />
+    <meta name="csrf-token" content="oC7anZrWmPbQHZJfSFoC5B0nIZ4ILYp4QlfZOMp2">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:title" content="POSTY">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://joadosubsub.com">
+    <meta property="og:description" content="posty">
+
+    <meta name="robots" content="index,follow">
+    <meta name="title" content="POSTY">
+    <meta name="description" content="posty">
+    <meta name="keywords" content="posty, postcard, custom">
+
+    <link rel="canonical" href="http://joadosubsub.com">
+    <link rel="icon" href="https://i.ibb.co/6WfZyvf/favicon.png">
+    <link rel="shortcut icon" href="https://i.ibb.co/6WfZyvf/favicon.png">
+    <title>POSTY</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+    clip-path: url(#svgPath);
+}
+
+body {
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+    clip-path: url(#svgPath);
+}
+
+.main-stranger {
+    margin: auto;
+    padding-bottom: 161px;
+    width: 880px;
+}
+
+#img-stranger {
+    width: 500px;
+    height: 500px;
+}
+
+.main-icon {
+    position:absolute;
+    text-align:center;
+    transform:translate(-50%,-50%);
+    cursor:pointer;
+    -webkit-tap-highlight-color : transparent;
+    z-index:2;
+}
+
+.main-icon img {
+    display:inline-block;
+    transform: scale(0.8);
+    pointer-events: none;
+    width:fit-content;
+}
+
+.main-icon#ducks-point-shop img {
+    transform: scale(1.2) translate( 5%, 5% );
+}
+
+.main-icon>div {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-shadow: 1.5px 1.5px 4px #030000;
+    color: white;
+    margin-top: -5px;
+}
+
+.main-icon>div>span {
+    display:block;
+    white-space: nowrap;
+}
+
+#mask-go-to-sleep {
+    position: fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+    z-index:9999;
+}
+
+#mask-go-to-sleep::after {
+    content: ' ';
+    position: absolute;
+    display: block;
+    box-shadow: rgb(0 0 0 / 66%) 0px 0px 36px 1915px inset;
+    width: 4000px;
+    height: 4000px;
+    text-align: center;
+    vertical-align: middle;
+    transform: translate(-50%, -50%);
+    border-radius: 2000px;
+}
+
+.on#mask-go-to-sleep {
+    opacity:1 !important;
+}
+
+#mask-contact {
+    position: fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    pointer-events: none;
+    transition: opacity 2s;
+    z-index:9999;
+}
+
+#mask-contact::after {
+    content: ' ';
+    position: absolute;
+    display: block;
+    box-shadow: rgb(0 0 0 / 66%) 0px 0px 36px 1883px inset;
+    width: 4000px;
+    height: 3881px;
+    text-align: center;
+    vertical-align: middle;
+    transform: translate(-50%, -50%);
+    border-radius: 2000px;
+    margin-left: -20px;
+}
+
+.on#mask-contact {
+    opacity:1 !important;
+    transition: opacity 0.5s;
+}
+
+#dish {
+    position: fixed;
+}
+
+
+</style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo" onclick="navigateTo('index.html')">
+    </header>
+
+<main>
+  
+<div class="main-stranger no-drag">
+    <img id="img-stranger" src="first-page_card.png" alt="Stranger" style="display: none;">
+    <img id="main-image" src="first-page_card.png" style="width:500x; height:500px;" autoplay muted controls loop playsinline></img>
+    <div id="dish" data-x=440 data-y=-270></div>
+    
+    <div class="main-icon" id="about" data-x=40 data-y=-80 style="margin-left: 30px; margin-top:-410px; width:250px;" data-url="index1.html">
+        <img src="sticker4.png" alt="about" >
+        <div>
+            <span></span>
+        </div>
+    </div>
+    
+    <div class="main-icon" id="preview" data-x=40 data-y=80 style="margin-left: 150px; margin-top:-280px;" data-url="index2.html">
+        <img src="sticker9.png" alt="preview">
+        <div>   
+            <span>sample</span>
+        </div>
+    </div>
+    <div class="main-icon" id="works" data-x=200 data-y=80 style="margin-left: -80px; margin-top:-290px;" data-url="index1.html">
+        <img src="sticker5.png" alt="Works">
+        <div>
+            <span></span>
+    </div>
+    </div>
+    <div class="main-icon" id="ducks-point-shop" data-x=360 data-y=80 style="margin-left: 50px; margin-top: -153px; width:250px;" data-url="index1.html">
+        <img src="sticker7.png" alt="Duck's Point shop" style="margin-bottom: 20px;">
+        <div>
+            <span></span>
+        </div>
+    </div>
+    <div class="main-icon" id="joado-building" data-x=520 data-y=80 style="margin-left:780px; margin-top:-390px;" data-url="index1.html">
+        <img src="sticker3.png" alt="JOADO Building">
+        <div>
+            <span></span> 
+        </div>
+    </div>
+    <div class="main-icon" id="personal-works" data-x=680 data-y=80 style="margin-left:900px; margin-top:-270px; width:250px;" data-url="index1.html">
+        <img src="sticker6.png" alt="Personal works" style="margin-left:10px; margin-bottom:10px;">
+        <div>
+            <span></span>
+        </div>
+    </div>
+    <div class="main-icon" id="friends" data-x=840 data-y=80 style="margin-left:750px; margin-top:-150px;" data-url="index1.html">
+        <img src="sticker8.png" alt="Friends">
+        <div>
+            <span></span>
+        </div>
+    </div>
+    <div class="main-icon" id="go-to-sleep" ondblclick="toggleMaskGoToSleep()" data-x=650 data-y=-560 style="margin-left:1010px; margin-top:-570px; width:250px;">
+        <img src="sticker10.png" alt="Go to sleep" style="width:100px; margin-right: 20px; margin-left: 20px">
+        <div style="margin-top: -20px; color: #ffd82d;">doble tap
+        </div>
+    </div>
+</div>
+
+
+<div id="mask-go-to-sleep" style="opacity:0.01;" ></div>
+<div id="mask-contact" style="opacity:0.01;" ></div>
+</main>
+<footer>
+<p>Copyright 2024. posty rights reserved.</p>
+</footer>
+        </div>
+    </div>
+
+    <script>
+    const main = document.querySelector('main');
+    const nav = document.querySelector('nav');
+    const trans_mask = document.getElementById('trans-mask');
+    const mask = document.getElementById('mask');
+
+        trans_mask.addEventListener('click', ()=>{
+            clickTransMask();
+        });
+
+        function clickTransMask() {
+            nav.classList.toggle('open');
+            trans_mask.classList.toggle('open');
+            btn_nav.classList.toggle('open');
+        }
+
+    $("#footer_link").click(function(){
+        const footer_url = "http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1401176861"
+        window.open(footer_url, "bizCommPop", "width=750, height=700;");
+        return false;
+    });
+    
+    </script>
+
+<script>
+let firstX = 0;
+let firstY = 0;
+let initX = 0;
+let initY = 0;
+let selectIcon = null;
+const goToSleep = document.getElementById('go-to-sleep');
+const maskGoToSleep = document.getElementById('mask-go-to-sleep');
+const maskContact = document.getElementById('mask-contact');
+const stranger = document.getElementById('img-stranger');
+const dish = document.getElementById('dish');
+let on_dish = false;
+let mobile = false;
+
+function mouseDown(e) {
+    e.preventDefault();
+
+    selectIcon = null;
+
+    for(let i=0; i<e.composedPath().length; i++) {        
+        if(e.composedPath()[i].classList != undefined && e.composedPath()[i].classList.contains('main-icon')) {
+            selectIcon = e.composedPath()[i];
+            break;
+        }
+    }
+
+    if(selectIcon == null)
+        return;
+
+    initX = selectIcon.style.marginLeft;
+    initX = initX.replace('px','') * 1;
+    initY = selectIcon.style.marginTop;
+    initY = initY.replace('px','') * 1;
+    firstX = e.pageX;
+    firstY = e.pageY;
+
+    main.addEventListener('mousemove', mouseMove, false);
+    main.addEventListener('mouseup', mouseUp, false);
+}
+
+function mouseMove(e) {
+    const x = initX + (e.pageX - firstX);
+    const y = initY + (e.pageY - firstY);
+    
+    if(!$("#img-stranger").is(":visible")){
+        $("#img-stranger").show();
+        $("#main-image").hide();
+    }
+
+    // 50px 거리 차이 이하면 접시에 붙인다.
+    if( 2500 > Math.pow(dish.dataset.x - x, 2) + Math.pow(dish.dataset.y - y, 2)) {
+        selectIcon.style.marginLeft = dish.dataset.x + 'px';
+        selectIcon.style.marginTop = dish.dataset.y + 'px';
+
+        on_dish = true;
+    }
+    else{
+        selectIcon.style.marginLeft = x + 'px';
+        selectIcon.style.marginTop = y + 'px';
+
+        on_dish = false;
+    }
+
+    if(selectIcon.id == 'go-to-sleep')
+        setMaskGoToSleep();
+}
+
+function mouseUp(e) {
+    main.removeEventListener('mousemove', mouseMove, false);
+    main.removeEventListener('mouseup', mouseUp, false);
+    
+    if(on_dish) {
+        switch (selectIcon.id) {
+            case 'reset-icons':
+                resetIcons();
+                break;
+            case 'go-to-sleep':
+                toggleMaskGoToSleep();
+                break;
+            // case 'contact':
+            //     onMaskContact();
+            //     break;
+            default:
+                location.href = selectIcon.dataset.url;
+                break;
+        }
+    }
+}
+
+function touchStart(e) {
+    //e.preventDefault();
+
+    if(!$("#img-stranger").is(":visible")){
+        $("#img-stranger").show();
+        $("#main-image").hide();
+    }
+
+    selectIcon = null;
+
+    for(let i=0; i<e.composedPath().length; i++) {        
+        if(e.composedPath()[i].classList != undefined && e.composedPath()[i].classList.contains('main-icon')) {
+            selectIcon = e.composedPath()[i];
+            break;
+        }
+    }
+
+    if(selectIcon == null)
+        return;
+
+    initX = selectIcon.style.marginLeft;
+    initX = initX.replace('px','') * 1;
+    initY = selectIcon.style.marginTop;
+    initY = initY.replace('px','') * 1;
+
+    const touch = e.touches;
+    firstX = touch[0].pageX;
+	firstY = touch[0].pageY;
+
+    main.addEventListener('touchmove', touchMove, false);
+    main.addEventListener('touchend', touchEnd, false);
+}
+
+function touchMove(e) {
+    const touch = e.touches;
+    const x = initX+touch[0].pageX-firstX;
+    const y = initY+touch[0].pageY-firstY;
+
+    // 50px 거리 차이 이하면 접시에 붙인다.
+    if( 2500 > Math.pow(dish.dataset.x - x, 2) + Math.pow(dish.dataset.y - y, 2)) {
+        selectIcon.style.marginLeft = dish.dataset.x + 'px';
+        selectIcon.style.marginTop = dish.dataset.y + 'px';
+
+        on_dish = true;
+    }else{
+        selectIcon.style.marginLeft = x + 'px';
+        selectIcon.style.marginTop = y + 'px';
+
+        on_dish = false;
+    }
+
+    if(selectIcon.id == 'go-to-sleep')
+        setMaskGoToSleep();
+}
+
+function touchEnd(e) {
+    main.removeEventListener('touchmove', touchMove, false);
+    main.removeEventListener('touchend', touchEnd, false);
+
+    if(on_dish) {
+        switch (selectIcon.id) {
+            case 'reset-icons':
+                resetIcons();
+                break;
+            case 'go-to-sleep':
+                toggleMaskGoToSleep();
+                break;
+            // case 'contact':
+            //     onMaskContact();
+            //     break;
+            case 'works':
+                location.href = selectIcon.dataset.url;
+                break;
+            default:
+                location.href = selectIcon.dataset.url;
+                break;
+        }
+    }
+}
+
+
+function resetIcons() {
+    if($("#img-stranger").is(":visible")){
+        $("#img-stranger").hide();
+        $("#main-image").show();
+    }
+
+    const icons = document.getElementsByClassName('main-icon');
+    for(let i=0; i<icons.length; i++) {
+        icons[i].style.marginLeft = icons[i].dataset.x + 'px';
+        icons[i].style.marginTop = icons[i].dataset.y  + 'px';
+    }
+    setMaskGoToSleep();
+}
+
+document.getElementById('about').addEventListener('click', function() {
+    window.location.href = this.getAttribute('data-url');
+});
+
+let timeout;
+let lastTap = 0;
+
+document.addEventListener('touchend', e=>{
+    let currentTime = new Date().getTime();
+    let tapLength = currentTime - lastTap;
+    clearTimeout(timeout);
+    if(tapLength < 500 && tapLength > 0) {
+        if(e.composedPath()[0].classList == 'main-icon') {
+            switch(e.composedPath()[0].id) {
+                case 'go-to-sleep':
+                    toggleMaskGoToSleep();
+                    break;
+                case 'reset-icons':
+                    resetIcons();
+                    break;
+                // case 'contact':
+                //     onMaskContact();
+                //     break;
+            }
+        }
+    }
+    lastTap = currentTime;
+});
+
+
+function setDish() {
+    dish.style.width = stranger.offsetWidth/4 + 'px';
+    dish.style.height = stranger.offsetHeight/6 + 'px';
+
+    dish.style.left = stranger.getBoundingClientRect().left + (stranger.scrollWidth/10*10) + 'px';
+    dish.style.top = stranger.getBoundingClientRect().top + (stranger.scrollHeight/10*8) + 'px';
+}
+
+
+function setMaskGoToSleep() {
+    maskGoToSleep.style.left = goToSleep.getBoundingClientRect().left + (goToSleep.offsetWidth/2) + 'px';
+    maskGoToSleep.style.top = goToSleep.getBoundingClientRect().top + (goToSleep.offsetHeight/2) + 'px';
+}
+
+function toggleMaskGoToSleep() {
+    maskGoToSleep.classList.toggle('on');
+}
+
+
+function onMaskContact() {
+    const sns_rect = document.getElementsByClassName('sns')[0].querySelector('img').getBoundingClientRect();
+    maskContact.style.left = sns_rect.right+25 + 'px';
+    maskContact.style.top = sns_rect.top+15 + 'px';
+
+    maskGoToSleep.classList.remove('on');
+    maskContact.classList.add('on');
+    setTimeout(()=>{
+        maskContact.classList.remove('on');
+    }, 500);
+}
+
+
+window.addEventListener('resize', e=>{
+
+    if(window.innerWidth > 768) {
+        if(mobile) {
+            mobile = false;
+            // 여기서 위치 리셋 필요.
+        }
+    }else{
+        if(!mobile) {
+            mobile = true;
+            // 여기서 위치 리셋 필요.
+        }
+    }
+
+    setMaskGoToSleep();
+    setDish();
+});
+
+
+window.addEventListener('scroll', e=> {
+    setMaskGoToSleep();
+    setDish();
+});
+
+
+let lastTouchEnd = 0;
+document.documentElement.addEventListener('touchend', e=> {
+    let now = (new Date()).getTime();
+    if(now - lastTouchEnd <= 300) {
+        e.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+document.documentElement.addEventListener('touchstart', e=> {
+    if (e.touches.length > 1)
+         e.preventDefault();
+}, false);
+
+
+document.addEventListener('DOMContentLoaded', ()=>{
+    main.addEventListener('mousedown', mouseDown, false);
+    main.addEventListener('touchstart', touchStart, false);
+
+    setMaskGoToSleep();
+    setDish();
+});
+
+//211115 수정 - 모바일에서 아이콘 드래그시 화면 스크롤 잠금
+$(".main-icon").on('touchmove', function(e) {
+    $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function (e) {
+        e.preventDefault();
+    });
+})
+
+$(".main-icon").on('touchend', function(e) {
+    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+})
+
+</script>
+</body>
+</html>
